@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A little birthday countdown for Kassandra's 17th birthday.">
+    <title>Happy 17th Birthday, Kassandra!</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Main Birthday Countdown -->
+    <main class="birthday-container">
+
+        <h1>Happy 17th Birthday, Kassandra!</h1>
+
+        <p class="subtitle">¡Se acerca un día muy especial…!</p>
+
+        <h2>Kassandra turns 17 in...</h2>
+
+        <div class="countdown" id="countdown">
+
+            <div class="countdown-box">
+                <span id="days">00</span>
+                <p>Days</p>
+            </div>
+
+            <div class="countdown-box">
+                <span id="hours">00</span>
+                <p>Hours</p>
+            </div>
+
+            <div class="countdown-box">
+                <span id="minutes">00</span>
+                <p>Minutes</p>
+            </div>
+
+            <div class="countdown-box">
+                <span id="seconds">00</span>
+                <p>Seconds</p>
+            </div>
+
+        </div>
+
+        <p class="birthday-date">06 . 12 . 2026</p>
+
+    </main>
+
+
+    <!-- Second Section: Under Construction -->
+    <section class="construction-section">
+
+        <div class="construction-content">
+
+            <h2>Website under construction...</h2>
+
+            <p>¡La cuenta atrás ha comenzado!</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Countdown JavaScript inside HTML -->
+    <script>
+        const birthdayDate = new Date("December 6, 2026 00:00:00").getTime();
+
+        function updateCountdown() {
+
+            const now = new Date().getTime();
+            const distance = birthdayDate - now;
+
+            if (distance <= 0) {
+                document.getElementById("countdown").innerHTML =
+                    "<h2>¡FELIZ CUMPLEAÑOS, KASSANDRA! 🎀</h2>";
+
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = String(days).padStart(2, "0");
+            document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+            document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+            document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+
+</body>
+</html>
